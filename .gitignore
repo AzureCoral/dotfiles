@@ -1,6 +1,5 @@
-github-copilot/
-gh/
-iterm2/
-
-nvim/pack/
-nvim/plugin/
+.config/github-copilot/
+.config/gh/
+.config/iterm2/
+.config/nvim/pack/
+.config/nvim/plugin/
