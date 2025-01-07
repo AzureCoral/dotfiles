@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "clangd", "bashls"}
+  ensure_installed = { "lua_ls", "clangd", "bashls", "rust_analyzer"}
 })
 
 local lspconfig = require('lspconfig')
@@ -26,11 +26,27 @@ lspconfig.pyright.setup({
 lspconfig.clangd.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "c", "cpp", "objc", "objcpp" }
+    filetypes = { "c", "cpp", "objc", "objcpp" },
+    cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+    },
 })
 
 lspconfig.bashls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "sh" }
+})
+
+lspconfig.rust_analyzer.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "rust" },
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = { allFeatures = true },  -- Enables all features in Cargo.toml
+      procMacro = { enable = true },   -- Enables procedural macros
+    }
+  },
 })
