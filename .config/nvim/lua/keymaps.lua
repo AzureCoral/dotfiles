@@ -17,6 +17,8 @@ vim.opt.expandtab = true
 
 vim.opt.relativenumber = true
 
+vim.opt.scrolloff = 5
+
 vim.cmd([[autocmd InsertEnter * set norelativenumber]])
 vim.cmd([[autocmd InsertLeave * set relativenumber]])
 
